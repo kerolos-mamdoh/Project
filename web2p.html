@@ -1,0 +1,87 @@
+<html>
+<head>
+<style>
+.hh{
+color:blue;
+text-align:center;
+}
+.txt{
+margin-left:600px;
+width:200px;
+height:25px;
+}
+.enter{
+margin-left:620px;
+background-color:black;
+color:red;
+width:150px;
+height:35px;
+}
+button{
+text-align:center;
+background-color:black;
+color:red;
+width:80px;
+height:25;
+}
+
+</style>
+</head>
+
+<body>
+<h1 class=hh> Learning English For Kids</h1>
+<input class="txt" type=text ><br><br>
+<input class="enter" type=button value="ok">
+<div>     </div>
+<div id="im"> </div>
+</body>
+
+<script>
+var holdd=document.getElementsByTagName("div")[0];
+var holdx=document.getElementsByClassName("txt")[0];
+var holdb=document.getElementsByClassName("enter")[0];
+var arr=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","w","x","y","r","z","u","s","t","v"];
+holdb.addEventListener("click",function(){
+while(holdd.firstChild){
+holdd.removeChild(holdd.firstChild);
+}
+var n=parseInt(holdx.value,10);
+for(var i=0;i<n;i++)
+{
+var k=0;
+var rand=(Math.floor(Math.random()*26));
+var bt=holdd.getElementsByTagName("button");
+for(var j=0;j<bt.length;j++)
+{
+if(arr[rand]==bt[j].name)
+{
+k=1;
+i--;
+}}
+if(k==0)
+{
+var cre=document.createElement("button");
+var text=document.createTextNode(arr[rand]);
+cre.appendChild(text);
+cre.name=arr[rand];
+holdd.appendChild(cre);
+}
+}
+var m=document.getElementsByTagName("button");
+var im=document.getElementById("im");
+for(var i=0;i<n;i++)
+{
+m[i].addEventListener("click",function(e){
+while(im.firstChild){
+im.removeChild(im.firstChild)
+}
+var f=document.createElement("img");
+f.src=e.target.textContent+".jpg";
+im.appendChild(f);
+});
+}
+
+});
+
+</script>
+</html>
